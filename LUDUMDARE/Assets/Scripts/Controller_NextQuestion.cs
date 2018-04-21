@@ -4,13 +4,10 @@ using UnityEngine;
 
 public class Controller_NextQuestion : MonoBehaviour {
 
-    private Question_Show questions;
+    public Question_Show questions;
 
 	// Use this for initialization
 	void Start () {
-        GameObject g = GameObject.Find("QuestionsHolder");
-
-        this.questions = g.GetComponent<Question_Show>();
     }
 
     // Update is called once per frame
