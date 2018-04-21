@@ -1024,6 +1024,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   bullet: {fileID: 1627532422806062, guid: 4a3d04d729df39b44bc6deb1f770b480, type: 2}
+  player: {fileID: 681265773}
 --- !u!4 &681265776
 Transform:
   m_ObjectHideFlags: 0

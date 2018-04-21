@@ -6,7 +6,7 @@ public class PlayerMovement : MonoBehaviour {
 
     public float speed;
     Rigidbody2D rb;
-    public GameObject bullet;
+    public GameObject bullet, player;
 
 	// Use this for initialization
 	void Start () {
@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))
         {
-            Instantiate(bullet, new Vector3(transform.position.x -3, transform.position.y, transform.position.z), Quaternion.identity);
+            Instantiate(bullet, player.transform.position, Quaternion.identity);
         }
 
         //LIMITAR POSICION
