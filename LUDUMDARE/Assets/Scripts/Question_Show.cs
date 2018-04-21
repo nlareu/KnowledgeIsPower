@@ -9,6 +9,8 @@ public class Question_Show : MonoBehaviour {
     public GameObject q3;
     private int currentQ;
 
+    public bool changing = false;
+
     // Use this for initialization
     void Start () {
         this.q1.SetActive(false);
@@ -22,7 +24,7 @@ public class Question_Show : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (Input.GetKeyDown("p"))
+        if (this.changing == true)
         {
             switch (this.currentQ)
             {
@@ -45,6 +47,8 @@ public class Question_Show : MonoBehaviour {
                     this.currentQ = 1;
                     break;
             }
+
+            this.changing = false;
         }
     }
 }
