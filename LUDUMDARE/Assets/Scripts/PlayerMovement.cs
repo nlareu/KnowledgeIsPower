@@ -29,7 +29,7 @@ public class PlayerMovement : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.W))
         {
-            Instantiate(bullet, transform.position, Quaternion.identity);
+            Instantiate(bullet, new Vector3(transform.position.x -3, transform.position.y, transform.position.z), Quaternion.identity);
         }
 
         //LIMITAR POSICION
