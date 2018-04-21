@@ -329,3 +329,5 @@ __pycache__/
 
 
 # End of https://www.gitignore.io/api/unity,visualstudio
+/LUDUMDARE/Temp/UnityLockfile
+/LUDUMDARE/Temp
