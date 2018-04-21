@@ -16,17 +16,20 @@ public class Enemy_Clase : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-
+		/*
 		Shoot_Time_Left -= Time.deltaTime;
 		if ( Shoot_Time_Left < 0 )
 		{
 //			Shoot();
 		}
+		*/
 	}
 
 	void OnCollisionEnter2D(Collision2D coll) {
-//		if (coll.gameObject.tag == "Enemy")
-//			coll.gameObject.hurt_enemy ("actual player weapon");
+		if (coll.gameObject.tag == "Bullet")
+			Debug.Log ("hola");
+		//	coll.gameObject.hurt_enemy ("actual player weapon");
+			Destroy(this.gameObject);
 	}
 }
 
