@@ -32,3 +32,7 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+/LUDUMDARE/.vs/LUDUMDARE/v15/Server/sqlite3/db.lock
+/LUDUMDARE/.vs/LUDUMDARE/v15/Server/sqlite3/storage.ide
+/LUDUMDARE/.vs/LUDUMDARE/v15/Server/sqlite3/storage.ide-shm
+/LUDUMDARE/.vs/LUDUMDARE/v15/Server/sqlite3/storage.ide-wal
