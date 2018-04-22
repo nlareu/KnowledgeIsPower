@@ -14,10 +14,13 @@ public class Waypointlist : MonoBehaviour {
 	private GameObject _currentWaypont;
 	private GameObject _nextWaypoint;
 
+	public float Enemy_Velocity;
+
 	// private float time = 1.0f;
 	private float timer = 5.0f;
 	// Use this for initialization
 	void Start () {
+		Enemy_Velocity = 0.25f;
 		_currentWaypont = transform.gameObject;
 		_nextWaypoint = ListOfWaypoints[StartIndex];
 	}
@@ -25,11 +28,16 @@ public class Waypointlist : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (_nextWaypoint != null) {
-			timer += Time.deltaTime;
+			timer += Time.deltaTime*Enemy_Velocity;
 			Vector2 initPos = _currentWaypont.transform.position;
 			Vector2 endPos = _nextWaypoint.transform.position;
 			var newPos = Vector2.Lerp (initPos, endPos, timer);
+
 			transform.position = newPos;
+
+
+
+
 		}
 		if (timer >= 1.0f) {
 			timer = 0;

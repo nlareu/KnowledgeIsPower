@@ -6,12 +6,15 @@ public class Enemy_Clase : MonoBehaviour {
 	public int Enemy_Color;
 	public int Enemy_Life;
 	public float Shoot_Time_Left= 1.5f;
+	public Rigidbody2D rbody;
 
 	void Start () {
 //		if ("fución ") {
 //			Enemy_Life = 1;
 
 //		}
+		rbody = this.GetComponent<Rigidbody2D>();
+
 	}
 	
 	// Update is called once per frame
@@ -25,11 +28,11 @@ public class Enemy_Clase : MonoBehaviour {
 		*/
 	}
 
-	void OnCollisionEnter2D(Collision2D coll) {
+	void OnTriggerEnter2D(Collider2D coll) {
 		if (coll.gameObject.tag == "Bullet")
-			Debug.Log ("hola");
 		//	coll.gameObject.hurt_enemy ("actual player weapon");
 			Destroy(this.gameObject);
+		//	Destroy(coll.gameObject);
 	}
 }
 
