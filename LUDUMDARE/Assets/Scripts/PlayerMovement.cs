@@ -7,7 +7,7 @@ public class PlayerMovement : MonoBehaviour {
     public float speed;
     Rigidbody2D rb;
     public GameObject bullet, player;
-	float timerbulletcalentado = 1f;
+	float timerbulletcalentado = 0.2f;
 
 	// Use this for initialization
 	void Start () {
@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour {
 					francisco = Instantiate(bullet, player.transform.position, Quaternion.identity) as GameObject;
 				francisco.transform.gameObject.tag = "Bullet";
 					Destroy (francisco, 2f);
-					timerbulletcalentado = 0.5f;
+					timerbulletcalentado = 0.2f;
 				}
 			}
 

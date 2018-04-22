@@ -15,7 +15,7 @@ public class Waypointlist : MonoBehaviour {
 	private GameObject _nextWaypoint;
 
 	// private float time = 1.0f;
-	private float timer = 0;
+	private float timer = 5.0f;
 	// Use this for initialization
 	void Start () {
 		_currentWaypont = transform.gameObject;
