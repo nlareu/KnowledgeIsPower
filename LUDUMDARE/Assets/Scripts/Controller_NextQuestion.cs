@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Controller_NextQuestion : MonoBehaviour {
 
-    public Question_Show questions;
+
 
 	// Use this for initialization
 	void Start () {
@@ -14,7 +14,7 @@ public class Controller_NextQuestion : MonoBehaviour {
     void Update () {
         if (Input.GetKeyDown("n"))
         {
-            this.questions.changing = true;
+           
         }
     }
 }
