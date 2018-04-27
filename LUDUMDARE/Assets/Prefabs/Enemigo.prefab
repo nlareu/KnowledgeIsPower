@@ -135,6 +135,7 @@ MonoBehaviour:
   - {fileID: 1258131673724554, guid: 07c877064192fae4ea3da0785b94a59c, type: 2}
   StartIndex: 0
   LoopList: 1
+  Enemy_Velocity: 0
 --- !u!114 &114667520630195680
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -146,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 008de3c79b4eddd47a76b320ebca87a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy_Color: 0
+  Enemy_Color: 2
   Enemy_Life: 0
   Shoot_Time_Left: 1.5
   rbody: {fileID: 0}

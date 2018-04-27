@@ -1049,6 +1049,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Enemy: {fileID: 1986950870780904, guid: 615f0f149ac575942a0bb3f8b774a35f, type: 2}
+  EnemyRed: {fileID: 1264369461462490, guid: 5af8fd6fc9365814ea76300568a5b3cf, type: 2}
   enemyspawnrate: 1
   spawn: {fileID: 1520369670}
   ListOfWaypoints1:

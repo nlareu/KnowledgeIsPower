@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy_Clase : MonoBehaviour {
-	public int Enemy_Color;
+	public int Enemy_Color = 1;
 	public int Enemy_Life;
 	public float Shoot_Time_Left= 1.5f;
 	public Rigidbody2D rbody;
@@ -29,9 +29,12 @@ public class Enemy_Clase : MonoBehaviour {
 	}
 
 	void OnTriggerEnter2D(Collider2D coll) {
-		if (coll.gameObject.tag == "Bullet")
-		//	coll.gameObject.hurt_enemy ("actual player weapon");
-			Destroy(this.gameObject);
+		if (coll.gameObject.tag == "Bullet") {
+			//	coll.gameObject.hurt_enemy ("actual player weapon");
+			AppController.InformEnemyDestroyed (this);
+
+			Destroy (this.gameObject);
+		}
 		//	Destroy(coll.gameObject);
 	}
 }
