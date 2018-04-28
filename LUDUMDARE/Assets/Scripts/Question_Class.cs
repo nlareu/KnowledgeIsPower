@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Question_Class : MonoBehaviour {
@@ -33,10 +34,16 @@ public class Question_Class : MonoBehaviour {
         if (this.enemiesCountByAnswer[enemy.Enemy_Color] <= 0)
         //if (this.enemiesDestroyed[enemy.Enemy_Color] <= 0)
         {
+            //this.DestroyAll();
+
             AppController_Class.Instance.InformQuestionWasAnswered(this.AnswersPoint[enemy.Enemy_Color]);
 
             //ResetEnemiesStatistics();
         }
+    }
+    private void DestroyAll()
+    {
+        this.AnswersEnemy.ForEach(item => Destroy(item.gameObject));
     }
     public void InformEnemyDestroyed(Enemy_Clase enemy)
     {
@@ -44,6 +51,10 @@ public class Question_Class : MonoBehaviour {
         //    enemiesDestroyed.Add(enemy.Enemy_Color, 0);
 
         //enemiesDestroyed[enemy.Enemy_Color]++;
+
+        //Deactive enemy object. Do not destoy it. All enemies will
+        //be destroyed when question is answered.
+        enemy.gameObject.SetActive(false);
 
         this.enemiesCountByAnswer[enemy.Enemy_Color]--;
 

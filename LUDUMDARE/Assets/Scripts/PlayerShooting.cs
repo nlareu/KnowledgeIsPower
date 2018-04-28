@@ -18,4 +18,9 @@ public class PlayerShooting : MonoBehaviour {
 
         transform.position += Vector3.up * speed * Time.deltaTime;
     }
+
+    void OnTriggerEnter2D(Collider2D coll)
+    {
+        Destroy(this.gameObject);
+    }
 }

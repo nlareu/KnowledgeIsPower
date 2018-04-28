@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Enemy_Clase : MonoBehaviour {
 
-    public GameObject InitialPosition;
+    //public GameObject InitialPosition;
     public Question_Class QuestionOwner;
-    public GameObject Sprite;
+    //public GameObject Sprite;
     public int Enemy_Color = 1;
 	//public int Enemy_Life;
 	//public float Shoot_Time_Left= 1.5f;
@@ -19,8 +19,8 @@ public class Enemy_Clase : MonoBehaviour {
         //		}
         //rbody = this.GetComponent<Rigidbody2D>();
 
-        this.transform.position = 
-        this.Sprite.transform.position = this.InitialPosition.transform.position;
+        //this.transform.position = 
+        //this.Sprite.transform.position = this.InitialPosition.transform.position;
 	}
 	
 	// Update is called once per frame
@@ -32,8 +32,8 @@ public class Enemy_Clase : MonoBehaviour {
 //			Shoot();
 		}
 		*/
-        this.transform.position =
-        this.Sprite.transform.position = this.InitialPosition.transform.position;
+        //this.transform.position =
+        //this.Sprite.transform.position = this.InitialPosition.transform.position;
     }
 
 	void OnTriggerEnter2D(Collider2D coll) {

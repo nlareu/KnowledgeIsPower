@@ -24,7 +24,7 @@ public class AppController_Class : MonoBehaviour
     void Start()
     {
         //Display initial question.
-        this.QuestionsHolder.DisplayQuestion(this.Questions[this.currentQuestionIndex]);
+        this.DisplayCurrentQuestionQuestion();
     }
 
     void Update()
@@ -36,18 +36,27 @@ public class AppController_Class : MonoBehaviour
 
         //    this.started = true;
         //}
-    }    
+    }
 
 
+    private void DisplayCurrentQuestionQuestion()
+    {
+        this.QuestionsHolder.DisplayQuestion(this.Questions[this.currentQuestionIndex]);
+
+        this.Questions[this.currentQuestionIndex].gameObject.SetActive(true);
+    }
     public void InformQuestionWasAnswered(int points)
     {
-        this.currentQuestionIndex++;
+        //Destroy entire question and all its objects.
+        Destroy(this.Questions[this.currentQuestionIndex].gameObject);
 
         this.QuestionsHolder.UpdatePoints(points);
 
+        this.currentQuestionIndex++;
+
         if (this.Questions.Count > this.currentQuestionIndex)
         {
-            this.QuestionsHolder.DisplayQuestion(this.Questions[this.currentQuestionIndex]);
+            this.DisplayCurrentQuestionQuestion();
         }
         else
         {
