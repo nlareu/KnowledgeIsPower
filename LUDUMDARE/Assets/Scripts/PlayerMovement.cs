@@ -45,17 +45,17 @@ public class PlayerMovement : MonoBehaviour {
        
 
         //LIMITAR POSICION
-        Vector3 pos = transform.position;
-        if (transform.position.x >= 5)
-        {
-            pos.x = 5;
-        }
-        if (transform.position.x <= 0)
-        {
-            pos.x = 0;
-        }
+        //Vector3 pos = transform.position;
+        //if (transform.position.x >= 5)
+        //{
+        //    pos.x = 5;
+        //}
+        //if (transform.position.x <= 0)
+        //{
+        //    pos.x = 0;
+        //}
 
-        transform.position = pos;
+        //transform.position = pos;
 
     }
 }
