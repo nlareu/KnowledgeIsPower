@@ -113,7 +113,7 @@ public class Enemy_Clase : MonoBehaviour {
         //Create a new instance to prevent reference.
         this.waypoints.Add(new Vector2(this.transform.position.x, this.transform.position.y));
 
-        this.waypoints.Add(new Vector2(this.transform.position.x + 3, this.transform.position.y));
+        this.waypoints.Add(new Vector2(this.transform.position.x + 1, this.transform.position.y));
     }
 
 	void OnTriggerEnter2D(Collider2D coll) {
