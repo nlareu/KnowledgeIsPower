@@ -6,6 +6,7 @@ public class AppController_Class : MonoBehaviour
 {
     public static AppController_Class Instance;
 
+    public int MaxQuestionsCount;
     public List<Question_Class> Questions;
     public MostrarPreguntas QuestionsHolder;
     public GameOverPanel_Class GameOverPanel;
@@ -18,6 +19,7 @@ public class AppController_Class : MonoBehaviour
         if (Instance == null)
             Instance = this;
 
+        this.MaxQuestionsCount = 4;
         this.Questions = new List<Question_Class>();
     }
 
@@ -54,7 +56,7 @@ public class AppController_Class : MonoBehaviour
 
         this.currentQuestionIndex++;
 
-        if (this.Questions.Count > this.currentQuestionIndex)
+        if (this.currentQuestionIndex < this.MaxQuestionsCount)
         {
             this.DisplayCurrentQuestionQuestion();
         }
