@@ -9,9 +9,10 @@ public class AppController_Class : MonoBehaviour
     public GameOverPanel_Class GameOverPanel;
     //public PresentatioLevel_Class InitialPresentation;
     public int MaxQuestionsCount;
+    public GameObject PlayZone;
     public PresentationPanel_Class PresentationController;
-    public List<Question_Class> Questions;
     public List<PresentatioLevel_Class> Presentations;
+    public List<Question_Class> Questions;
     public MostrarPreguntas QuestionsHolder;
 
     private int currentQuestionIndex = 0;
@@ -29,8 +30,8 @@ public class AppController_Class : MonoBehaviour
 
     void Start()
     {
-        //Display initial question.
-        this.DisplayCurrentQuestionQuestion();
+        ////Display initial question.
+        //this.DisplayCurrentQuestionQuestion();
     }
 
     void Update()
@@ -43,7 +44,6 @@ public class AppController_Class : MonoBehaviour
         //    this.started = true;
         //}
     }
-
 
     private void DisplayCurrentQuestionQuestion()
     {
@@ -86,6 +86,11 @@ public class AppController_Class : MonoBehaviour
                 })
             );
         }
+    }
+    public void StartGamePlay()
+    {
+        this.PlayZone.gameObject.SetActive(true);
+        this.DisplayCurrentQuestionQuestion();
     }
 }
 
