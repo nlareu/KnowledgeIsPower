@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AppController_Class : MonoBehaviour
 {
-    public static AppController_Class Instance;
+    //public static AppController_Class Instance;
 
     public int MaxQuestionsCount;
     public List<Question_Class> Questions;
@@ -16,8 +16,8 @@ public class AppController_Class : MonoBehaviour
 
     public AppController_Class()
     {
-        if (Instance == null)
-            Instance = this;
+        //if (Instance == null)
+        //    Instance = this;
 
         this.MaxQuestionsCount = 4;
         this.Questions = new List<Question_Class>();

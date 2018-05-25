@@ -9,11 +9,14 @@ public class Question_Class : MonoBehaviour {
     public List<int> AnswersPoint;
     public List<Enemy_Clase> AnswersEnemy;
 
+    private AppController_Class AppController;
     private Dictionary<int, int> enemiesCountByAnswer = new Dictionary<int, int>();
     //private Dictionary<int, int> enemiesDestroyed = new Dictionary<int, int>();
 
     // Use this for initialization
     void Start () {
+        this.AppController = (AppController_Class)FindObjectsOfType(typeof(AppController_Class))[0];
+
         //Set enemies count for each answer with data set on AnsersEnemy property.
         this.AnswersEnemy.ForEach(item =>
         {
@@ -36,7 +39,8 @@ public class Question_Class : MonoBehaviour {
         {
             //this.DestroyAll();
 
-            AppController_Class.Instance.InformQuestionWasAnswered(this.AnswersPoint[enemy.Enemy_Color]);
+            this.AppController.InformQuestionWasAnswered(this.AnswersPoint[enemy.Enemy_Color]);
+            //AppController_Class.Instance.InformQuestionWasAnswered(this.AnswersPoint[enemy.Enemy_Color]);
 
             //ResetEnemiesStatistics();
         }
