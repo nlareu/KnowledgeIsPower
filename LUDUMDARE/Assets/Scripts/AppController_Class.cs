@@ -6,10 +6,13 @@ public class AppController_Class : MonoBehaviour
 {
     //public static AppController_Class Instance;
 
-    public int MaxQuestionsCount;
-    public List<Question_Class> Questions;
-    public MostrarPreguntas QuestionsHolder;
     public GameOverPanel_Class GameOverPanel;
+    //public PresentatioLevel_Class InitialPresentation;
+    public int MaxQuestionsCount;
+    public PresentationPanel_Class PresentationController;
+    public List<Question_Class> Questions;
+    public List<PresentatioLevel_Class> Presentations;
+    public MostrarPreguntas QuestionsHolder;
 
     private int currentQuestionIndex = 0;
     //private bool started = false;
@@ -20,6 +23,7 @@ public class AppController_Class : MonoBehaviour
         //    Instance = this;
 
         this.MaxQuestionsCount = 4;
+        this.Presentations = new List<PresentatioLevel_Class>();
         this.Questions = new List<Question_Class>();
     }
 
@@ -43,9 +47,18 @@ public class AppController_Class : MonoBehaviour
 
     private void DisplayCurrentQuestionQuestion()
     {
-        this.QuestionsHolder.DisplayQuestion(this.Questions[this.currentQuestionIndex]);
+        //Run initial presentation.
+        this.PresentationController.DisplayPresentation(
+            this.Presentations[this.currentQuestionIndex],
+            new Action(delegate ()
+            {
+                this.PresentationController.gameObject.SetActive(false);
 
-        this.Questions[this.currentQuestionIndex].gameObject.SetActive(true);
+                this.QuestionsHolder.DisplayQuestion(this.Questions[this.currentQuestionIndex]);
+
+                this.Questions[this.currentQuestionIndex].gameObject.SetActive(true);
+            })
+        );
     }
     public void InformQuestionWasAnswered(int points)
     {
@@ -62,8 +75,16 @@ public class AppController_Class : MonoBehaviour
         }
         else
         {
-            //    game over
-            this.GameOverPanel.SetFinalPoints(this.QuestionsHolder.GetPoints());
+            this.PresentationController.DisplayPresentation(
+                this.Presentations[this.currentQuestionIndex],
+                new Action(delegate ()
+                {
+                    this.PresentationController.gameObject.SetActive(false);
+
+                    //game over
+                    this.GameOverPanel.SetFinalPoints(this.QuestionsHolder.GetPoints());
+                })
+            );
         }
     }
 }
