@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameOverPanel_Class : MonoBehaviour {
@@ -13,8 +14,10 @@ public class GameOverPanel_Class : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        //Wait for any key input to restart the game play.
+        if (Input.anyKey)
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
 
     public void SetFinalPoints(int points)
     {
