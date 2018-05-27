@@ -61,8 +61,8 @@ public class Enemy_Clase : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (this.isDestroyed == false)
-        {
+        //if (this.isDestroyed == false)
+        //{
             if (this._nextWaypoint != null)
             {
                 Vector2 initPos = this._currentWaypont;
@@ -117,21 +117,21 @@ public class Enemy_Clase : MonoBehaviour {
     //			Shoot();
             }
             */
-        }
-        else
-        {
-            if (this.playingFinalSound == false)
-            {
-                this.playingFinalSound = true;
+        //}
+        //else
+        //{
+            //if (this.playingFinalSound == false)
+            //{
+            //    this.playingFinalSound = true;
 
-                //Play sound
-                this.audioSource_explotion.Play();
-            }
-            else if (this.audioSource_explotion.isPlaying == false)
-            {
-                Destroy(this.gameObject);
-            }
-        }
+            //    //Play sound
+            //    this.audioSource_explotion.Play();
+            //}
+            //else if (this.audioSource_explotion.isPlaying == false)
+            //{
+                //Destroy(this.gameObject);
+            //}
+        //}
     }
 
     private void BuildWaypoints_HorizontalSimple()
@@ -146,7 +146,13 @@ public class Enemy_Clase : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D coll) {
 		if (coll.gameObject.tag == "Bullet") {
-            this.isDestroyed = true;
+            //this.isDestroyed = true;
+
+            var audioManager = (AudioManager)FindObjectsOfType(typeof(AudioManager))[0];
+
+            audioManager.Play("EnemyExplotion");
+
+            Destroy(this.gameObject);
 
             this.QuestionOwner.InformEnemyDestroyed(this);
 		}

@@ -2808,7 +2808,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
   spreadCustomCurve:
     serializedVersion: 2
     m_Curve:
@@ -2832,7 +2832,7 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
-    m_RotationOrder: 4
+    m_RotationOrder: 0
 --- !u!4 &159665370
 Transform:
   m_ObjectHideFlags: 0
@@ -11286,7 +11286,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &735336641
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11295,9 +11295,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 735336640}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a100b6fc0ab49084988fa822121adaa8, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f3c6cc0044be6942b5ddfc66fffb8f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mixerGroup: {fileID: 0}
+  sounds:
+  - name: EnemyExplotion
+    clip: {fileID: 8300000, guid: 7f5c8c0633e05bb42a64ec7c18aeffab, type: 3}
+    volume: 1
+    volumeVariance: 0
+    pitch: 1
+    pitchVariance: 0
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
 --- !u!4 &735336642
 Transform:
   m_ObjectHideFlags: 0
@@ -24440,7 +24451,6 @@ MonoBehaviour:
   - q2
   - p2
   GameOverPanel: {fileID: 1040490405}
-  MaxQuestionsCount: 2
   PlayZone: {fileID: 514983813}
   PresentationController: {fileID: 301583243}
   Presentations:

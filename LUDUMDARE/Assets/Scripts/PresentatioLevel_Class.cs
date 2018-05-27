@@ -51,8 +51,8 @@ public class PresentatioLevel_Class : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        //Cancel presentation if any key is pressed.
-        if (Input.anyKey)
+        //Cancel presentation if enter key is pressed.
+        if ((Input.GetKey(KeyCode.Return)) || (Input.GetKey(KeyCode.KeypadEnter)))
         {
             this.Finish();
 
