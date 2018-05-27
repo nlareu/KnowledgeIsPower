@@ -56,10 +56,6 @@ public class Question_Class : MonoBehaviour {
 
         //enemiesDestroyed[enemy.Enemy_Color]++;
 
-        //Deactive enemy object. Do not destoy it. All enemies will
-        //be destroyed when question is answered.
-        enemy.gameObject.SetActive(false);
-
         this.enemiesCountByAnswer[enemy.Enemy_Color]--;
 
         CheckEnemiesDestroyedCount(enemy);

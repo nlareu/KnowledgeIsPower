@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(BoxCollider2D))]
+[RequireComponent(typeof(Rigidbody2D))]
 public class Enemy_Clase : MonoBehaviour {
 
     public Question_Class QuestionOwner;
@@ -10,19 +12,28 @@ public class Enemy_Clase : MonoBehaviour {
     public float Enemy_Velocity = 0.25f;
     public List<GameObject> ListOfWaypoints;
     public int StartIndex = 0;
+
+    //Sounds
+    public AudioClip Sound_Explotion;
     //public bool LoopList;
 
     //public int Enemy_Life;
     //public float Shoot_Time_Left= 1.5f;
     //public Rigidbody2D rbody;
 
+    private AudioSource audioSource_explotion;
     public List<Vector2> waypoints;
     private int currentWaypointIndex;
     private Vector2 _currentWaypont;
     private Vector2 _nextWaypoint;
     private float timer = 5.0f;
+    private bool isDestroyed = false;
+    private bool playingFinalSound;
 
     void Start (){
+        this.audioSource_explotion = this.gameObject.AddComponent<AudioSource>();
+        this.audioSource_explotion.clip = this.Sound_Explotion;
+
         //If waypoints are not defined, build it automatically
         //depending the initial position of the object.
         if (this.ListOfWaypoints.Count == 0)
@@ -50,60 +61,77 @@ public class Enemy_Clase : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        if (this._nextWaypoint != null)
+        if (this.isDestroyed == false)
         {
-            Vector2 initPos = this._currentWaypont;
-            Vector2 endPos = this._nextWaypoint;
+            if (this._nextWaypoint != null)
+            {
+                Vector2 initPos = this._currentWaypont;
+                Vector2 endPos = this._nextWaypoint;
 
-            this.timer += Time.deltaTime * this.Enemy_Velocity;
+                this.timer += Time.deltaTime * this.Enemy_Velocity;
 
-            var newPos = Vector2.Lerp(initPos, endPos, timer);
+                var newPos = Vector2.Lerp(initPos, endPos, timer);
 
-            this.transform.position = newPos;
+                this.transform.position = newPos;
+            }
+
+
+            if (this.timer >= 1.0f)
+            {
+                this.timer = 0;
+
+                this._currentWaypont = this._nextWaypoint;
+
+                this.currentWaypointIndex++;
+
+                if (this.currentWaypointIndex == this.waypoints.Count)
+                    this.currentWaypointIndex = 0;
+
+                //        if (!this.LoopList && this.StartIndex == this.currentWaypointIndex)
+                //        {
+                //            /*
+                // * Bug:
+                // * 	I couldn't make a foreach of <T> so I'll enabled every MonoBehaviour
+                // * 	from the enemies. In the future I should look at this
+                // * 
+                //foreach (var mono in MonoBehavioursCallback) {
+                //	GetComponent<typeof(mono)> ().enabled = true;
+                //}
+                //*/
+
+
+                //            this.enabled = false;
+                //        }
+                //        else
+                //        {
+                this._nextWaypoint = this.waypoints[this.currentWaypointIndex];
+                //}
+
+            }
+
+
+            /*
+            Shoot_Time_Left -= Time.deltaTime;
+            if ( Shoot_Time_Left < 0 )
+            {
+    //			Shoot();
+            }
+            */
         }
-
-
-        if (this.timer >= 1.0f)
+        else
         {
-            this.timer = 0;
+            if (this.playingFinalSound == false)
+            {
+                this.playingFinalSound = true;
 
-            this._currentWaypont = this._nextWaypoint;
-
-            this.currentWaypointIndex++;
-
-            if (this.currentWaypointIndex == this.waypoints.Count)
-                this.currentWaypointIndex = 0;
-
-            //        if (!this.LoopList && this.StartIndex == this.currentWaypointIndex)
-            //        {
-            //            /*
-            // * Bug:
-            // * 	I couldn't make a foreach of <T> so I'll enabled every MonoBehaviour
-            // * 	from the enemies. In the future I should look at this
-            // * 
-            //foreach (var mono in MonoBehavioursCallback) {
-            //	GetComponent<typeof(mono)> ().enabled = true;
-            //}
-            //*/
-
-
-            //            this.enabled = false;
-            //        }
-            //        else
-            //        {
-            this._nextWaypoint = this.waypoints[this.currentWaypointIndex];
-            //}
-
+                //Play sound
+                this.audioSource_explotion.Play();
+            }
+            else if (this.audioSource_explotion.isPlaying == false)
+            {
+                Destroy(this.gameObject);
+            }
         }
-
-
-        /*
-		Shoot_Time_Left -= Time.deltaTime;
-		if ( Shoot_Time_Left < 0 )
-		{
-//			Shoot();
-		}
-		*/
     }
 
     private void BuildWaypoints_HorizontalSimple()
@@ -118,14 +146,10 @@ public class Enemy_Clase : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D coll) {
 		if (coll.gameObject.tag == "Bullet") {
-            //	coll.gameObject.hurt_enemy ("actual player weapon");
-            //AppController_Class.Instance.InformEnemyDestroyed (this);
+            this.isDestroyed = true;
+
             this.QuestionOwner.InformEnemyDestroyed(this);
-
-
-            Destroy (this.gameObject);
 		}
-		//	Destroy(coll.gameObject);
 	}
 }
 

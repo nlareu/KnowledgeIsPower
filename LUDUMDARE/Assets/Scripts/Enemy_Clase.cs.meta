@@ -5,7 +5,9 @@ licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - QuestionOwner: {instanceID: 0}
+  - Sound_Explotion: {fileID: 8300000, guid: 7f5c8c0633e05bb42a64ec7c18aeffab, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

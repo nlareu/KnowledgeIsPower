@@ -51,6 +51,15 @@ public class PresentatioLevel_Class : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        //Cancel presentation if any key is pressed.
+        if (Input.anyKey)
+        {
+            this.Finish();
+
+            //Exit method.
+            return;
+        }
+
         if ((this.fadingIn == false) && (this.fadingOut == false))
         {
             this.currentDisplayInterval -= Time.deltaTime;
@@ -97,6 +106,12 @@ public class PresentatioLevel_Class : MonoBehaviour {
             )
         );
     }
+    private void Finish()
+    {
+        Destroy(this.gameObject);
+
+        this.onCompleteCallback();
+    }
 
     //public void FadeIn_Complete()
     //{
@@ -122,9 +137,7 @@ public class PresentatioLevel_Class : MonoBehaviour {
         }
         else
         {
-            Destroy(this.gameObject);
-
-            this.onCompleteCallback();
+            this.Finish();
 
             //iTween.FadeTo(
             //    this.gameObject,
