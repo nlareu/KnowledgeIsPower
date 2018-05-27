@@ -11298,35 +11298,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a100b6fc0ab49084988fa822121adaa8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mixerGroup: {fileID: 0}
-  sounds:
-  - name: Disparo1
-    clip: {fileID: 8300000, guid: 7ebeb99ff8fa9584386ddf44c2d131db, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Disparo2
-    clip: {fileID: 8300000, guid: 35e0cf02f122aa347be7788f3f03aa35, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
-  - name: Disparo3
-    clip: {fileID: 8300000, guid: a56d0fb437134974c93d657a2a45f0c5, type: 3}
-    volume: 1
-    volumeVariance: 0
-    pitch: 1
-    pitchVariance: 0
-    loop: 0
-    mixerGroup: {fileID: 0}
-    source: {fileID: 0}
 --- !u!4 &735336642
 Transform:
   m_ObjectHideFlags: 0
@@ -24461,6 +24432,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a43e2264c4eedd844b1a9c9b2f30f189, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GameObjectsOrder:
+  - P0
+  - Q0
+  - Q1
+  - P1
+  - q2
+  - p2
   GameOverPanel: {fileID: 1040490405}
   MaxQuestionsCount: 2
   PlayZone: {fileID: 514983813}

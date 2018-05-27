@@ -37,7 +37,7 @@ public class Question_Class : MonoBehaviour {
         if (this.enemiesCountByAnswer[enemy.Enemy_Color] <= 0)
         //if (this.enemiesDestroyed[enemy.Enemy_Color] <= 0)
         {
-            //this.DestroyAll();
+            this.DestroyAll();
 
             this.AppController.InformQuestionWasAnswered(this.AnswersPoint[enemy.Enemy_Color]);
             //AppController_Class.Instance.InformQuestionWasAnswered(this.AnswersPoint[enemy.Enemy_Color]);
@@ -47,7 +47,10 @@ public class Question_Class : MonoBehaviour {
     }
     private void DestroyAll()
     {
-        this.AnswersEnemy.ForEach(item => Destroy(item.gameObject));
+        this.AnswersEnemy.ForEach(item => {
+            if (item != null)
+                Destroy(item.gameObject);
+        });
     }
     public void InformEnemyDestroyed(Enemy_Clase enemy)
     {

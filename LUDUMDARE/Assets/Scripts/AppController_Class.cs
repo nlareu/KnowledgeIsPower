@@ -4,93 +4,131 @@ using UnityEngine;
 
 public class AppController_Class : MonoBehaviour
 {
-    //public static AppController_Class Instance;
-
+    public List<string> GameObjectsOrder;
     public GameOverPanel_Class GameOverPanel;
     //public PresentatioLevel_Class InitialPresentation;
-    public int MaxQuestionsCount;
     public GameObject PlayZone;
     public PresentationPanel_Class PresentationController;
     public List<PresentatioLevel_Class> Presentations;
     public List<Question_Class> Questions;
     public MostrarPreguntas QuestionsHolder;
 
-    private int currentQuestionIndex = 0;
-    //private bool started = false;
+    private int currentObjectIndex = -1;
+    private object currentObject;
+    private string currentObjectType;
 
     public AppController_Class()
     {
-        //if (Instance == null)
-        //    Instance = this;
-
-        this.MaxQuestionsCount = 4;
+        this.GameObjectsOrder = new List<string>();
         this.Presentations = new List<PresentatioLevel_Class>();
         this.Questions = new List<Question_Class>();
     }
 
     void Start()
     {
-        ////Display initial question.
-        //this.DisplayCurrentQuestionQuestion();
     }
 
     void Update()
     {
-        //if (this.started == false)
-        //{
-            ////Display initial question.
-            //this.QuestionsHolder.DisplayQuestion(this.Questions[this.currentQuestionIndex]);
-
-        //    this.started = true;
-        //}
     }
 
-    private void DisplayCurrentQuestionQuestion()
+    private void DisplayNextObject()
     {
-        //Run initial presentation.
-        this.PresentationController.DisplayPresentation(
-            this.Presentations[this.currentQuestionIndex],
-            new Action(delegate ()
-            {
-                this.PresentationController.gameObject.SetActive(false);
+        string objectRef;
+        int objectIndex;
+        object prevObject = this.currentObject;
+        string prevObjectType = this.currentObjectType;
 
-                this.QuestionsHolder.DisplayQuestion(this.Questions[this.currentQuestionIndex]);
 
-                this.Questions[this.currentQuestionIndex].gameObject.SetActive(true);
-            })
-        );
-    }
-    public void InformQuestionWasAnswered(int points)
-    {
-        //Destroy entire question and all its objects.
-        Destroy(this.Questions[this.currentQuestionIndex].gameObject);
 
-        this.QuestionsHolder.UpdatePoints(points);
+        //Increase current object index.
+        this.currentObjectIndex++;
 
-        this.currentQuestionIndex++;
 
-        if (this.currentQuestionIndex < this.MaxQuestionsCount)
+        //Check if there is a next object to display.
+        if (this.currentObjectIndex < this.GameObjectsOrder.Count)
+        //if (this.currentObjectIndex < this.MaxQuestionsCount)
         {
-            this.DisplayCurrentQuestionQuestion();
+            //Get current object data.
+            objectRef = this.GameObjectsOrder[this.currentObjectIndex];
+
+            //IMPORTANT: Stringify char before convert it to int due to
+            //convert a char to int means get the int value of the char.
+            //What we really want is convert the string number to int.
+            //That is why it is necessary first stringify the char.
+            objectIndex = Convert.ToInt32(objectRef[1].ToString());
+
+            this.currentObjectType = objectRef[0].ToString().ToUpper();
+
+
+            //Hide, remove or something the previous object.
+            if (prevObject != null)
+                this.HideCurrentObject(prevObject, prevObjectType, this.currentObjectType);
+
+
+
+            switch (this.currentObjectType)
+            {
+                //Question
+                case "Q":
+                    Question_Class question = this.Questions[objectIndex];
+
+                    //Set current object
+                    this.currentObject = question;
+
+                    //Dispaly question
+                    this.QuestionsHolder.DisplayQuestion(question);
+
+                    question.gameObject.SetActive(true);
+                    break;
+                //Presentation
+                case "P":
+                    this.currentObject = this.Presentations[objectIndex];
+
+                    this.PresentationController.DisplayPresentation(
+                        (PresentatioLevel_Class)this.currentObject,
+                        new Action(delegate ()
+                        {
+                            this.DisplayNextObject();
+                        })
+                    );
+                    break;
+            }
         }
         else
         {
-            this.PresentationController.DisplayPresentation(
-                this.Presentations[this.currentQuestionIndex],
-                new Action(delegate ()
-                {
-                    this.PresentationController.gameObject.SetActive(false);
+            this.HideCurrentObject(prevObject, prevObjectType, "");
 
-                    //game over
-                    this.GameOverPanel.SetFinalPoints(this.QuestionsHolder.GetPoints());
-                })
-            );
+            //game over
+            this.GameOverPanel.SetFinalPoints(this.QuestionsHolder.GetPoints());
         }
+    }
+    private void HideCurrentObject(object currentObject, string currentObjectType, string nextObjectType)
+    {
+        switch (currentObjectType)
+        {
+            //Question
+            case "Q":
+                Destroy(((Question_Class)currentObject).gameObject);
+                break;
+            //Presentation
+            case "P":
+                if (nextObjectType != "P")
+                    this.PresentationController.gameObject.SetActive(false);
+                break;
+        }
+    }
+    public void InformQuestionWasAnswered(int points)
+    {
+        this.QuestionsHolder.UpdatePoints(points);
+
+        this.DisplayNextObject();
     }
     public void StartGamePlay()
     {
         this.PlayZone.gameObject.SetActive(true);
-        this.DisplayCurrentQuestionQuestion();
+
+        this.DisplayNextObject();
     }
 }
 
