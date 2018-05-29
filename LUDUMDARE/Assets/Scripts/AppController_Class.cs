@@ -56,7 +56,7 @@ public class AppController_Class : MonoBehaviour
             //convert a char to int means get the int value of the char.
             //What we really want is convert the string number to int.
             //That is why it is necessary first stringify the char.
-            objectIndex = Convert.ToInt32(objectRef[1].ToString());
+            objectIndex = Convert.ToInt32(objectRef.Remove(0, 1));
 
             this.currentObjectType = objectRef[0].ToString().ToUpper();
 
