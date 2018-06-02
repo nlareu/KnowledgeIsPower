@@ -24485,11 +24485,58 @@ MonoBehaviour:
   GameObjectsOrder:
   - p0
   - q0
-  - p1
   - q1
+  - p1
   - q2
+  - q3
   - p2
   GameOverPanel: {fileID: 1040490405}
+  LevelsBackgroundMusic:
+  - name: nivel1
+    clip: {fileID: 8300000, guid: 2fd1708836ee30e4aa14a654300b9991, type: 3}
+    volume: 1
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: nivel2
+    clip: {fileID: 8300000, guid: 7d69f327eff4cbb47aed9dfc8879d2c8, type: 3}
+    volume: 0.75
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: nivel3
+    clip: {fileID: 8300000, guid: 284168e12cfffb540af85df0254515e8, type: 3}
+    volume: 0.75
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: nivel4
+    clip: {fileID: 8300000, guid: 7a74b88b619594c43ba8fe5679c5581a, type: 3}
+    volume: 0.75
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
+  - name: nivel5
+    clip: {fileID: 8300000, guid: bbb68e5ca38af5140bbcd4d459b9157f, type: 3}
+    volume: 0.75
+    volumeVariance: 0.1
+    pitch: 1
+    pitchVariance: 0.1
+    loop: 0
+    mixerGroup: {fileID: 0}
+    source: {fileID: 0}
   PlayZone: {fileID: 514983813}
   PresentationController: {fileID: 301583243}
   Presentations:
@@ -24515,6 +24562,19 @@ MonoBehaviour:
   - {fileID: 1710197457}
   - {fileID: 33493929}
   - {fileID: 797090888}
+  QuestionsBackgroundMusic:
+  - ClipName: nivel1
+    QuestionIndex: 0
+  - ClipName: nivel1
+    QuestionIndex: 1
+  - ClipName: nivel2
+    QuestionIndex: 2
+  - ClipName: nivel2
+    QuestionIndex: 3
+  - ClipName: nivel3
+    QuestionIndex: 4
+  - ClipName: nivel3
+    QuestionIndex: 5
   QuestionsHolder: {fileID: 57081323}
 --- !u!1 &1502918867
 GameObject:
@@ -34261,6 +34321,7 @@ GameObject:
   - component: {fileID: 2022773523}
   - component: {fileID: 2022773522}
   - component: {fileID: 2022773521}
+  - component: {fileID: 2022773524}
   m_Layer: 0
   m_Name: MainMenu
   m_TagString: Untagged
@@ -34334,6 +34395,86 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2022773519}
+--- !u!82 &2022773524
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2022773519}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: f0dcc0c04d5e5064c8da06ea862c7a89, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &2048446320
 GameObject:
   m_ObjectHideFlags: 0
